@@ -38,7 +38,7 @@ func readProto[T any, PT interface {
 	var resp T
 	var respPtr PT = &resp
 	err = proto.Unmarshal(buf[:n], respPtr)
-	if err != nil {	
+	if err != nil {
 		return nil, 0, err
 	}
 	return respPtr, n, nil
@@ -98,7 +98,7 @@ func sendDataAndWaitForAck(conn winio.PipeConn, data []byte) (*zdsapi.WorkloadRe
 		return nil, err
 	}
 
-	return readMessage(conn, 20*time.Second)
+	return readMessage(conn, 5*time.Second)
 }
 
 func main() {
